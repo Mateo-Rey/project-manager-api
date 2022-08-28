@@ -1,6 +1,6 @@
 import { initializeApp, cert, getApps } from "firebase-admin/app";
 import { getFirestore } from 'firebase-admin/firestore'
-import { credentials } from './dbsecrets.js'
+import { credentials } from './dbcredentials.js'
 
 
 

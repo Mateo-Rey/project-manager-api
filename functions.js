@@ -15,3 +15,18 @@ export const getProjects = (req, res) => {
         .catch((err) => handleError(err,res))
 
 }
+
+export const addProject = (req, res) => {
+    const newProject = req.body
+    newProject.creationDate = new Date()
+    db.collection('projects')
+        .add(newProject)
+        .then((doc) => {
+            res.status(201).send({
+              success: true,
+              id: doc.id,
+            });
+          })
+          .catch((err) => handleError(err, res));
+
+}

@@ -1,0 +1,3 @@
+nodemon . to start on localhost:4000
+
+api built for a post, get, and patch request to database

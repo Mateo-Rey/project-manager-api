@@ -6,6 +6,7 @@ function handleError(err, res) {
 }
 
 export const getProjects = (req, res) => {
+    req.params
     db.collection('projects')
         .get()
         .then((collection) => {
@@ -29,4 +30,17 @@ export const addProject = (req, res) => {
           })
           .catch((err) => handleError(err, res));
 
+}
+
+export const updateProject = async (req, res) => {
+    const {userId} = req.params.userId
+    const {projectId} = req.params.projectId
+    const update = req.body
+    const docRef = db.collection('projects').doc(`ftQ7zK7Kl2sRWYUaO3rp`).set(update, {merge: true})
+
+        await docRef
+            .then(res.status(200).send('Project Updated'))
+            .catch((err)=> {console.log(err)})
+        
+    
 }

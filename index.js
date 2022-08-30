@@ -1,15 +1,16 @@
 import express from 'express';
 import functions from 'firebase-functions'
 import cors from 'cors';
-import { addProject, getProjects } from './functions.js';
+import { addProject, getProjects, updateProject } from './functions.js';
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.listen(4000, () => {console.log('port 4000')})
+app.listen(3004, () => {console.log('port 4000')})
 
 
-app.get('/projects/:id', getProjects)
-app.post('/add-project/:id', addProject)
+app.get('/projects/:userId', getProjects)
+app.post('/add-project/:userId/:projectId', addProject)
+app.put('/update-project/:userId/:projectId', updateProject)
 export const api = functions.https.onRequest(app)
